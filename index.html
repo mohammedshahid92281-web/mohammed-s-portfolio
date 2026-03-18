@@ -1,166 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Mohammed Shahid| Portfolio</title>
-<style>
-  body {
-    margin:0; font-family:'Segoe UI',sans-serif;
-    background:linear-gradient(120deg,#0078d7,#00c6ff);
-    color:#333;
-  }
-  header {
-    text-align:center; padding:60px 20px;
-    background:#fff; box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    animation:fadeInDown 1s ease;
-  }
-  header img {
-    width:120px; height:120px; border-radius:50%;
-    border:4px solid #0078d7; margin-bottom:15px;
-    animation:spin 6s linear infinite;
-  }
-  header h1 { font-size:42px; margin:0; }
-  header p { font-size:18px; color:#555; }
-  nav {
-    display:flex; justify-content:center; gap:20px;
-    background:#0078d7; padding:15px;
-  }
-  nav a {
-    color:#fff; text-decoration:none; font-weight:bold;
-    transition:0.3s;
-  }
-  nav a:hover { color:#ffd700; }
-  section {
-    padding:60px 20px; max-width:1000px; margin:auto;
-    animation:fadeIn 1s ease;
-  }
-  h2 { text-align:center; margin-bottom:30px; }
-  .grid {
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-  }
-  .card {
-    background:#fff; border-radius:12px; padding:20px;
-    box-shadow:0 6px 15px rgba(0,0,0,0.1);
-    transition:transform 0.3s;
-  }
-  .card:hover { transform:translateY(-5px); }
-  .icon {
-    font-size:40px; margin-bottom:10px;
-    animation:bounce 2s infinite;
-    color:#0078d7;
-  }
-  footer {
-    text-align:center; padding:20px; background:#0078d7; color:#fff;
-  }
-  /* Animations */
-  @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
-  @keyframes fadeInDown { from{opacity:0; transform:translateY(-30px);} to{opacity:1; transform:translateY(0);} }
-  @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
-</style>
-<!-- Font Awesome for icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Shahid- Professional Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 2rem;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.2s forwards;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.4s forwards;
+        }
+
+        .cta-buttons {
+            opacity: 0;
+            animation: fadeInUp 1s 0.6s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 0 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2563eb;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2563eb;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: #2563eb;
+        }
+
+        /* About */
+        .about {
+            background: #f8fafc;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: #2563eb;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-item h3 {
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        /* Downloads */
+        .downloads {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .download-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .download-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Contact */
+        .contact {
+            background: #f8fafc;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            color: #2563eb;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #2563eb;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">YourName</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#downloads">Downloads</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-<header>
-  <img src="C:\Users\moham\OneDrive\Documents\GitHub\mohammed-s-portfolio\WhatsApp Image 2026-03-12 at 1.30.49 PM.jpeg" alt="Profile Photo">
-  <h1>Mohammed Shahid</h1>
-  <p>|BCA Student | Aspiring Software Developer and Passionate about building modern and user-friendly applications.</p>
-</header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="C:\Users\moham\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\B846F6E37064B464B79A3FA05F3C27B1B8F91664\transfers\2026-11\kapkap_20260305133026022_sys.jpg.jpeg" alt="Profile Photo" class="profile-img">
+            <h1>Hi, I'm Your Name</h1>
+            <p>Full Stack Developer & UI/UX Designer creating amazing digital experiences</p>
+            <div class="cta-buttons">
+                <a href="#downloads" class="btn btn-primary">Download Resume</a>
+                <a href="#portfolio" class="btn btn-secondary">View Work</a>
+            </div>
+        </div>
+    </section>
 
-<nav>
-  <a href="#profile">Profile</a>
-  <a href="#resume">Resume</a>
-  <a href="#certificates">Certificates</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
+    <!-- About Section -->
+    <section id="about" class="about reveal">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div>
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop" alt="About" class="profile-img">
+            </div>
+            <div class="about-text">
+                <h3>Passionate Developer with 5+ Years Experience</h3>
+                <p>I create beautiful, functional websites and applications that solve real problems. My expertise spans frontend, backend, and everything in between.</p>
+                <p>Currently working with modern technologies like React, Node.js, Tailwind CSS, and cloud services to deliver scalable solutions.</p>
+                <div class="skills">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Python</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="profile">
-  <h2>Profile</h2>
-  <p style="text-align:center; max-width:700px; margin:auto;">
-    I’m Mohammed Shahid from Tumakuru, passionate about crafting interactive web experiences with modern design and smooth animations. My focus is on building user‑friendly applications and continuously learning new technologies.
-  </p>
-</section>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="reveal">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <i class="fas fa-laptop-code" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                <h3>E-Commerce Platform</h3>
+                <p>Full-stack e-commerce solution with payment integration, admin dashboard, and responsive design.</p>
+            </div>
+            <div class="portfolio-item">
+                <i class="fas fa-mobile-alt" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                <h3>Mobile Banking App</h3>
+                <p>React Native app with secure authentication, real-time transactions, and biometric login.</p>
+            </div>
+            <div class="portfolio-item">
+                <i class="fas fa-chart-line" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
+                <h3>Analytics Dashboard</h3>
+                <p>Interactive dashboard with real-time data visualization using D3.js and Chart.js.</p>
+            </div>
+        </div>
+    </section>
 
-<section id="resume">
-  <h2>Resume</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="icon"><i class="fas fa-user-graduate"></i></div>
-      <h3>Education</h3>
-      <p>Bachelor of Computer Science, XYZ University</p>
-    </div>
-    <div class="card">
-      <div class="icon"><i class="fas fa-briefcase"></i></div>
-      <h3>Experience</h3>
-      <p>Frontend Developer at ABC Tech (2023‑2026)</p>
-    </div>
-    <div class="card">
-      <div class="icon"><i class="fas fa-tools"></i></div>
-      <h3>Skills</h3>
-      <p>HTML, CSS, JavaScript, React, Node.js</p>
-    </div>
-  </div>
-</section>
+    <!-- Downloads Section -->
+    <section id="downloads" class="downloads reveal">
+        <h2 class="section-title" style="color: white;">Download Documents</h2>
+        <div class="download-cards">
+            <div class="download-card">
+                <i class="fas fa-file-pdf download-icon"></i>
+                <h3>Resume</h3>
+                <p>Latest resume in PDF format</p>
+                <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download="YourName-Resume.pdf" class="btn" style="background: white; color: #2563eb; margin-top: 1rem; display: inline-block;">Download Resume</a>
+            </div>
+            <div class="download-card">
+                <i class="fas fa-certificate download-icon"></i>
+                <h3>Certificates</h3>
+                <p>All professional certifications</p>
+                <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download="Certificates.pdf" class="btn" style="background: white; color: #2563eb; margin-top: 1rem; display: inline-block;">View Certificates</a>
+            </div>
+        </div>
+    </section>
 
-<section id="certificates">
-  <h2>Certificates</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="icon"><i class="fas fa-certificate"></i></div>
-      <h3>Web Development</h3>
-      <p>Certified by FreeCodeCamp</p>
-    </div>
-    <div class="card">
-      <div class="icon"><i class="fas fa-certificate"></i></div>
-      <h3>UI/UX Design</h3>
-      <p>Certified by Coursera</p>
-    </div>
-    <div class="card">
-      <div class="icon"><i class="fas fa-certificate"></i></div>
-      <h3>Cloud Fundamentals</h3>
-      <p>Certified by Microsoft Learn</p>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="icon"><i class="fas fa-laptop-code"></i></div>
-      <h3>Smart Quiz System</h3>
-      <p>Interactive quiz platform with admin dashboard, student registration, and leaderboard.</p>
-    </div>
-    <div class="card">
-      <div class="icon"><i class="fas fa-portfolio"></i></div>
-      <h3>Portfolio Website</h3>
-      <p>This portfolio site showcasing modern UI/UX and animations in one file.</p>
-    </div>
-    <div class="card">
-      <div class="icon"><i class="fas fa-mobile-alt"></i></div>
-      <h3>Mobile App UI</h3>
-      <p>Designed sleek mobile interfaces with responsive layouts and smooth transitions.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p style="text-align:center;">Let’s connect! Reach me at:</p>
-  <p style="text-align:center; font-weight:bold;">📧 mohammedshahid92281@gmail.com</p>
-  <div style="text-align:center; font-size:30px;">
-    <i class="fab fa-linkedin" style="margin:10px; animation:bounce 2s infinite;"></i>
-    <i class="fab fa-github" style="margin:10px; animation:bounce 2s infinite;"></i>
-    <i class="fab fa-twitter" style="margin:10px; animation:bounce 2s infinite;"></i>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2026 Mohammed Shahid No:9353583205. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
+    <!-- Contact Section -->
+    <section id="contact" class="contact reveal">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Let's work together!</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>your.email@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>New York, USA</span>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your
