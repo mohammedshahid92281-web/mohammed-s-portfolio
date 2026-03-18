@@ -1,211 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammed Shahid Portfolio</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: #0f172a;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    header {
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #020617;
-      position: sticky;
-      top: 0;
-    }
-
-    header h1 {
-      color: #38bdf8;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #fff;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: #38bdf8;
-    }
-
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .hero h2 {
-      font-size: 40px;
-    }
-
-    .hero span {
-      color: #38bdf8;
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      border-radius: 5px;
-      background: #38bdf8;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      opacity: 0.8;
-    }
-
-    .skills, .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .card {
-      background: #020617;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .contact input, .contact textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #020617;
-      margin-top: 20px;
-    }
-
-    /* Mobile */
-    @media(max-width: 600px) {
-      .hero h2 {
-        font-size: 28px;
-      }
-
-      nav {
-        display: none;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Mohammed Shahid| Portfolio</title>
+<style>
+  body {
+    margin:0; font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(120deg,#0078d7,#00c6ff);
+    color:#333;
+  }
+  header {
+    text-align:center; padding:60px 20px;
+    background:#fff; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    animation:fadeInDown 1s ease;
+  }
+  header img {
+    width:120px; height:120px; border-radius:50%;
+    border:4px solid #0078d7; margin-bottom:15px;
+    animation:spin 6s linear infinite;
+  }
+  header h1 { font-size:42px; margin:0; }
+  header p { font-size:18px; color:#555; }
+  nav {
+    display:flex; justify-content:center; gap:20px;
+    background:#0078d7; padding:15px;
+  }
+  nav a {
+    color:#fff; text-decoration:none; font-weight:bold;
+    transition:0.3s;
+  }
+  nav a:hover { color:#ffd700; }
+  section {
+    padding:60px 20px; max-width:1000px; margin:auto;
+    animation:fadeIn 1s ease;
+  }
+  h2 { text-align:center; margin-bottom:30px; }
+  .grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+  }
+  .card {
+    background:#fff; border-radius:12px; padding:20px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
+    transition:transform 0.3s;
+  }
+  .card:hover { transform:translateY(-5px); }
+  .icon {
+    font-size:40px; margin-bottom:10px;
+    animation:bounce 2s infinite;
+    color:#0078d7;
+  }
+  footer {
+    text-align:center; padding:20px; background:#0078d7; color:#fff;
+  }
+  /* Animations */
+  @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+  @keyframes fadeInDown { from{opacity:0; transform:translateY(-30px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+</style>
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 
 <header>
-  <h1>Shahid</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <img src="C:\Users\moham\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\B846F6E37064B464B79A3FA05F3C27B1B8F91664\transfers\2026-11\kapkap_20260305133026022_sys.jpg.jpeg" alt="Profile Photo">
+  <h1>Mohammed Shahid</h1>
+  <p>|BCA Student | Aspiring Software Developer and Passionate about building modern and user-friendly applications.</p>
 </header>
 
-<!-- Hero -->
-<section class="hero" id="home">
-  <h2>Hello, I'm <span>Mohammed Shahid</span></h2>
-  <p>BCA Student | Aspiring Software Developer</p>
-  <p>Passionate about building modern and user-friendly applications.</p>
+<nav>
+  <a href="#profile">Profile</a>
+  <a href="#resume">Resume</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <a href="#projects" class="btn">View Projects</a>
-  <a href="#" class="btn">Download Resume</a>
+<section id="profile">
+  <h2>Profile</h2>
+  <p style="text-align:center; max-width:700px; margin:auto;">
+    I’m Mohammed Shahid from Tumakuru, passionate about crafting interactive web experiences with modern design and smooth animations. My focus is on building user‑friendly applications and continuously learning new technologies.
+  </p>
 </section>
 
-<!-- About -->
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am a final-year BCA student with a strong interest in Web Development,
-  Programming, and Artificial Intelligence. I aim to become a skilled software developer.</p>
-</section>
-
-<!-- Skills -->
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="card">HTML, CSS, JavaScript</div>
-    <div class="card">Python / PHP</div>
-    <div class="card">MySQL Database</div>
-    <div class="card">Git & GitHub</div>
+<section id="resume">
+  <h2>Resume</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon"><i class="fas fa-user-graduate"></i></div>
+      <h3>Education</h3>
+      <p>Bachelor of Computer Science, XYZ University</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="fas fa-briefcase"></i></div>
+      <h3>Experience</h3>
+      <p>Frontend Developer at ABC Tech (2023‑2026)</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="fas fa-tools"></i></div>
+      <h3>Skills</h3>
+      <p>HTML, CSS, JavaScript, React, Node.js</p>
+    </div>
   </div>
 </section>
 
-<!-- Projects -->
+<section id="certificates">
+  <h2>Certificates</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon"><i class="fas fa-certificate"></i></div>
+      <h3>Web Development</h3>
+      <p>Certified by FreeCodeCamp</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="fas fa-certificate"></i></div>
+      <h3>UI/UX Design</h3>
+      <p>Certified by Coursera</p>
+    </div>
+    <div class="card">
+      <div class="icon"><i class="fas fa-certificate"></i></div>
+      <h3>Cloud Fundamentals</h3>
+      <p>Certified by Microsoft Learn</p>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <h2>Projects</h2>
-  <div class="projects">
+  <div class="grid">
     <div class="card">
+      <div class="icon"><i class="fas fa-laptop-code"></i></div>
       <h3>Smart Quiz System</h3>
-      <p>Online quiz platform with timer and scoring.</p>
+      <p>Interactive quiz platform with admin dashboard, student registration, and leaderboard.</p>
     </div>
-
     <div class="card">
+      <div class="icon"><i class="fas fa-portfolio"></i></div>
       <h3>Portfolio Website</h3>
-      <p>Personal responsive portfolio website.</p>
+      <p>This portfolio site showcasing modern UI/UX and animations in one file.</p>
     </div>
-
     <div class="card">
-      <h3>CRUD App</h3>
-      <p>Basic Create Read Update Delete application.</p>
+      <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+      <h3>Mobile App UI</h3>
+      <p>Designed sleek mobile interfaces with responsive layouts and smooth transitions.</p>
     </div>
   </div>
 </section>
 
-<!-- Contact -->
-<section id="9353583205" class="contact">
-  <h2>Contact Me</h2>
-  <form onsubmit="sendMessage(event)">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea rows="5" placeholder="Message"></textarea>
-    <button class="btn">Send</button>
-  </form>
+<section id="contact">
+  <h2>Contact</h2>
+  <p style="text-align:center;">Let’s connect! Reach me at:</p>
+  <p style="text-align:center; font-weight:bold;">📧 mohammedshahid92281@gmail.com</p>
+  <div style="text-align:center; font-size:30px;">
+    <i class="fab fa-linkedin" style="margin:10px; animation:bounce 2s infinite;"></i>
+    <i class="fab fa-github" style="margin:10px; animation:bounce 2s infinite;"></i>
+    <i class="fab fa-twitter" style="margin:10px; animation:bounce 2s infinite;"></i>
+  </div>
 </section>
 
 <footer>
-  <p>© 2026 Mohammed Shahid | All Rights Reserved</p>
+  <p>&copy; 2026 Mohammed Shahid No:9353583205. All rights reserved.</p>
 </footer>
-
-<script>
-function sendMessage(e) {
-  e.preventDefault();
-  alert("Message sent successfully!");
-}
-</script>
 
 </body>
 </html>
