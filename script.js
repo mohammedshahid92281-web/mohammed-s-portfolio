@@ -168,15 +168,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Welcome Greeting on First User Interaction
+        // Enter Screen Logic
+        const enterScreen = document.getElementById('enter-screen');
+        const enterBtn = document.getElementById('enter-btn');
         let hasWelcomed = false;
-        document.body.addEventListener('click', () => {
-            if (!hasWelcomed) {
-                hasWelcomed = true;
-                speak("Welcome to Mohammed Shahid's portfolio. I am his artificial intelligence voice assistant. Feel free to explore his work!");
-            }
-        });
 
+        if (enterBtn && enterScreen) {
+            enterBtn.addEventListener('click', () => {
+                enterScreen.classList.add('hidden');
+                setTimeout(() => {
+                    enterScreen.style.display = 'none';
+                }, 800);
+
+                if (!hasWelcomed) {
+                    hasWelcomed = true;
+                    // Fix iOS/Safari AudioContext requirement by ensuring it fires strictly on the click stack
+                    window.speechSynthesis.resume();
+                    speak("Welcome to Mohammed Shahid's portfolio. I am his artificial intelligence voice assistant. Feel free to explore his work!");
+                }
+            });
+        }
     } else if (voiceBtn) {
         voiceBtn.style.display = 'none'; // Hide if unsupported by browser
     }
