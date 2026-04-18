@@ -309,10 +309,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.download = 'Mohammed shahid Resume.pdf';
                     link.click();
                 } else if (command.includes('contact') || command.includes('hire') || command.includes('email')) {
-                    speak("Scrolling to contact form.");
+                    speak("Scrolling to contact section.");
                     if(lenis) lenis.scrollTo('#contact');
                     else document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                    setTimeout(() => document.getElementById('name')?.focus(), 800);
                 } else if (command.includes('joke')) {
                     speak("Why do programmers prefer dark mode? Because light attracts bugs!");
                 } else if (command.includes('hello') || command.includes('hi')) {
