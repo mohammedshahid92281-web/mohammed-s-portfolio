@@ -163,65 +163,38 @@ document.addEventListener('DOMContentLoaded', () => {
         animateParticles();
     }
 
-    // 4. GSAP Magnetic Cursor & Card Tilt
+    // 4. Interactive Card Tilt Effect
     // ==========================================
-    const cursor = document.querySelector('.cursor');
-    const follower = document.querySelector('.cursor-follower');
-    
-    if (cursor && follower && typeof gsap !== 'undefined') {
-        let posX = 0, posY = 0, mouseX = 0, mouseY = 0;
-
-        gsap.to({}, {
-            duration: 0.016,
-            repeat: -1,
-            onRepeat: function () {
-                posX += (mouseX - posX) / 9;
-                posY += (mouseY - posY) / 9;
-                gsap.set(follower, { css: { left: posX - 20, top: posY - 20 } });
-                gsap.set(cursor, { css: { left: mouseX - 4, top: mouseY - 4 } });
-            }
-        });
-
-        document.addEventListener("mousemove", (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        const interactables = document.querySelectorAll('a, button, .interactive-card, input, textarea');
-        interactables.forEach(el => {
-            el.addEventListener('mouseenter', () => follower.classList.add('active'));
-            el.addEventListener('mouseleave', () => follower.classList.remove('active'));
-            
-            // Subtle 3D Tilt Effect for cards
-            if (el.classList.contains('interactive-card')) {
-                el.addEventListener('mousemove', (e) => {
-                    const rect = el.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 10;
-                    const rotateY = (centerX - x) / 10;
-                    
-                    gsap.to(el, {
-                        rotateX: rotateX,
-                        rotateY: rotateY,
-                        scale: 1.05,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                });
+    if (typeof gsap !== 'undefined') {
+        const interactiveCards = document.querySelectorAll('.interactive-card');
+        interactiveCards.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
                 
-                el.addEventListener('mouseleave', () => {
-                    gsap.to(el, {
-                        rotateX: 0,
-                        rotateY: 0,
-                        scale: 1,
-                        duration: 0.5,
-                        ease: "elastic.out(1, 0.3)"
-                    });
+                gsap.to(el, {
+                    rotateX: rotateX,
+                    rotateY: rotateY,
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: "power2.out"
                 });
-            }
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    scale: 1,
+                    duration: 0.5,
+                    ease: "elastic.out(1, 0.3)"
+                });
+            });
         });
     }
 
