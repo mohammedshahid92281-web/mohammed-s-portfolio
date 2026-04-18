@@ -61,6 +61,45 @@ h1, h2, h3 { font-weight: 700; line-height: 1.2; }
 }
 .btn-primary { background: var(--accent-gradient); color: white; box-shadow: 0 8px 25px var(--gradient-glow); }
 .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
+.btn-outline { background: transparent; color: var(--text-primary); border: 1px solid var(--glass-border); }
+.btn-outline:hover { background: rgba(255,255,255,0.05); border-color: white; }
+.btn-sm { padding: 0.6rem 1.2rem; font-size: 0.9rem; border-radius: 10px; }
+.btn-group { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+
+/* Downloads Grid */
+.download-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.download-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.download-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background: var(--accent-gradient);
+    filter: blur(60px);
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+}
 
 /* ==================================
    Navigation (Hidden during Entry)
