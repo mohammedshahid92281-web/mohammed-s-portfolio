@@ -5,13 +5,24 @@ export default function Home() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-20 min-h-screen flex flex-col justify-center space-y-16 selection:bg-neutral-800 selection:text-white">
       {/* Header / Intro */}
-      <section className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance text-neutral-900 dark:text-neutral-100">
-          Blending Creativity and Code to Shape a Better Tomorrow.
-        </h1>
-        <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
-          Hi, I&apos;m <strong>Mohammed Shahid</strong>, a software developer passionate about blending innovation with impact. I thrive on solving real-world problems through clean code and minimal design. Let&apos;s innovate together!
-        </p>
+      <section className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        <div className="flex flex-col-reverse md:flex-row items-start md:items-center gap-8 md:gap-12">
+          <div className="flex-1 space-y-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance text-neutral-900 dark:text-neutral-100">
+              Blending Creativity and Code to Shape a Better Tomorrow.
+            </h1>
+            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
+              Hi, I&apos;m <strong>Mohammed Shahid</strong>, a software developer passionate about blending innovation with impact. I thrive on solving real-world problems through clean code and minimal design. Let&apos;s innovate together!
+            </p>
+          </div>
+          <div className="flex-shrink-0">
+            <img 
+              src="/Shahid img.jpeg" 
+              alt="Mohammed Shahid" 
+              className="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover shadow-2xl border border-neutral-200 dark:border-neutral-800"
+            />
+          </div>
+        </div>
         
         {/* Navigation / Links */}
         <div className="flex flex-wrap gap-6 pt-4 text-sm font-medium">
