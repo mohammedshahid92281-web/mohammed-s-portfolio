@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Shahid - Professional Portfolio</title>
-    <!-- Google Fonts -->
+    <title>Mohammed Shahid - Portfolio</title>
+    <!-- Google Fonts: Inter for that minimalist tech look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -15,32 +15,34 @@
     <!-- Favicon (Web Symbol) -->
     <link rel="icon" type="image/jpeg" href="Shahid img.jpeg">
 </head>
-<body class="dark-theme">
+<body class="dhyan-theme">
     <!-- Welcome Overlay for Autoplay Policy -->
     <div id="welcome-overlay" class="welcome-overlay">
-        <div class="welcome-content glass-panel">
+        <div class="welcome-content">
             <h2>Welcome</h2>
-            <p>Click anywhere to enter portfolio and enable audio</p>
+            <p>Click anywhere to enter</p>
             <div class="pulse-circle"></div>
         </div>
     </div>
 
-    <div id="blob-bg"></div>
-    <div id="blob-bg-2"></div>
-    
-    <header>
-        <nav>
-            <div class="nav-container">
-                <a href="#home" class="logo">M<span>S.</span></a>
+    <!-- Navigation Header -->
+    <header class="minimal-header">
+        <nav class="nav-container">
+            <div class="nav-left">
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#downloads">Downloads</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#projects">Work</a></li>
+                    <li><a href="#downloads">Resume</a></li>
                 </ul>
+            </div>
+            
+            <div class="nav-center">
+                <a href="#home" class="pill-logo">Mohammed Shahid</a>
+            </div>
+
+            <div class="nav-right">
+                <a href="#contact" class="btn-contact">Contact</a>
                 <div class="hamburger" id="hamburger">
-                    <span></span>
                     <span></span>
                     <span></span>
                 </div>
@@ -49,211 +51,145 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero fade-in-section">
-            <div class="hero-content">
-                <div class="profile-img-container">
-                    <img src="Shahid img.jpeg" alt="Mohammed Shahid Photo" class="profile-img">
-                    <div class="glow-ring"></div>
+        <!-- Split Hero Section -->
+        <section id="home" class="hero-split section-padding">
+            <div class="hero-left">
+                <div class="image-wrapper">
+                    <img src="Shahid img.jpeg" alt="Mohammed Shahid" class="hero-img">
                 </div>
-                <div class="hero-text">
-                    <span class="greeting">Hello, I'm</span>
-                    <h1 class="glitch-effect" data-text="Mohammed Shahid">Mohammed Shahid</h1>
-                    <h2>Software Developer & BCA Student</h2>
-                    <p>Passionate about turning creative ideas into clean, functional, and scalable code. Let's build the future together.</p>
-                    <div class="cta-buttons">
-                        <a href="Mohammed shahid Resume.pdf" target="_blank" class="btn btn-primary">
-                            <span>View Resume</span> <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#projects" class="btn btn-secondary">
-                            <span>View My Work</span>
-                        </a>
+            </div>
+            <div class="hero-right">
+                <div class="hero-text-content fade-in-section">
+                    <span class="eyebrow">Creative Developer based in India</span>
+                    <h1>I build <br>digital <br>experiences.</h1>
+                    <p>I am a final-year BCA student and Software Developer passionate about turning creative ideas into clean, functional, and scalable code.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-solid">View Work</a>
+                        <a href="Mohammed shahid Resume.pdf" target="_blank" class="btn btn-outline">Resume</a>
                     </div>
                 </div>
             </div>
-            <a href="#about" class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </a>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about fade-in-section">
-            <div class="section-container">
-                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-                <div class="about-content glass-panel">
-                    <div class="about-text">
-                        <h3>I am a final year BCA Student</h3>
-                        <p>I am Mohammed Shahid, a final-year Bachelor of Computer Applications (BCA) student with a strong passion for technology and software development. I am deeply interested in web development, programming, and artificial intelligence, enjoying creating modern, user-friendly applications that solve real-world problems.</p>
-                        <p>My goal is to build a successful career as a software developer, where I can contribute to innovative projects and grow both personally and professionally. I'm constantly learning and exploring new technologies to enhance my skill set.</p>
-                        
-                        <div class="skills-container mt-4">
-                            <h4>Core Skills & Interests</h4>
-                            <div class="skills">
-                                <span class="skill-tag">Web Development</span>
-                                <span class="skill-tag">Python & AI</span>
-                                <span class="skill-tag">UI/UX Design</span>
-                                <span class="skill-tag">Problem Solving</span>
-                                <span class="skill-tag">R Programming</span>
-                            </div>
+        <!-- Bento Box Projects Section -->
+        <section id="projects" class="bento-section section-padding fade-in-section">
+            <div class="section-heading">
+                <h2>Selected Work</h2>
+                <span class="heading-line"></span>
+            </div>
+            
+            <div class="bento-grid">
+                <!-- Large Project -->
+                <a href="smart on line quiz management system.pdf" target="_blank" class="bento-item bento-large">
+                    <div class="bento-content">
+                        <div class="bento-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Smart Online Quiz System</h3>
+                        <p>A comprehensive web-based platform for educational institutions to conduct, evaluate, and track online examinations instantly.</p>
+                        <span class="bento-link">Explore Case Study <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Small Project -->
+                <a href="personal portfolio.pdf" target="_blank" class="bento-item">
+                    <div class="bento-content">
+                        <div class="bento-icon"><i class="fas fa-id-badge"></i></div>
+                        <h3>Personal Portfolio</h3>
+                        <p>An interactive digital platform designed to showcase skills, acting as a modern, accessible digital resume.</p>
+                        <span class="bento-link">View Details <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Small Info Block -->
+                <div class="bento-item bento-dark">
+                    <div class="bento-content">
+                        <h3>Tech Stack</h3>
+                        <div class="bento-tags">
+                            <span>Python</span>
+                            <span>JavaScript</span>
+                            <span>UI/UX</span>
+                            <span>Web Dev</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects fade-in-section">
-            <div class="section-container">
-                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-                <div class="projects-grid">
+        <!-- About & Downloads (Minimal Split) -->
+        <section id="about" class="info-section section-padding fade-in-section">
+             <div class="split-container">
+                 <div class="info-left">
+                     <h2>About Me</h2>
+                     <p>I am Mohammed Shahid, deeply interested in web development and artificial intelligence. My goal is to build a successful career as a software developer, contributing to innovative projects.</p>
+                 </div>
+                 
+                 <div class="info-right" id="downloads">
+                     <div class="download-list">
+                         <a href="Mohammed shahid Resume.pdf" download class="dl-item">
+                             <div class="dl-text">
+                                 <h4>Curriculum Vitae</h4>
+                                 <span>PDF, 2026</span>
+                             </div>
+                             <i class="fas fa-arrow-down"></i>
+                         </a>
+                         <a href="R Programing certificate .pdf" target="_blank" class="dl-item">
+                             <div class="dl-text">
+                                 <h4>R Programming</h4>
+                                 <span>Certificate</span>
+                             </div>
+                             <i class="fas fa-external-link-alt"></i>
+                         </a>
+                         <a href="Python Certificate.pdf" target="_blank" class="dl-item">
+                             <div class="dl-text">
+                                 <h4>Python Foundation</h4>
+                                 <span>Certificate</span>
+                             </div>
+                             <i class="fas fa-external-link-alt"></i>
+                         </a>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Minimal Contact Section -->
+        <section id="contact" class="contact-simple section-padding fade-in-section">
+            <h2 class="massive-text">Let's talk.</h2>
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <p class="contact-desc">Currently available for freelance opportunities and full-time roles.</p>
+                    <a href="mailto:mohammedshahid92281@gmail.com" class="big-email">mohammedshahid92281@gmail.com</a>
                     
-                    <!-- Project 1 -->
-                    <a href="smart on line quiz management system.pdf" target="_blank" class="project-card glass-panel interactive-card">
-                        <div class="project-icon-wrapper">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="project-info">
-                            <h3>Smart Online Quiz System</h3>
-                            <p>A web-based application to simplify online examinations with features like automatic evaluation, instant result generation, and performance tracking.</p>
-                            <span class="read-more">View Details <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </a>
-
-                    <!-- Project 2 -->
-                    <a href="personal portfolio.pdf" target="_blank" class="project-card glass-panel interactive-card">
-                        <div class="project-icon-wrapper">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="project-info">
-                            <h3>Personal Portfolio</h3>
-                            <p>An interactive digital platform designed to showcase skills, projects, and achievements, acting as a modern, accessible digital resume.</p>
-                            <span class="read-more">View Details <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Downloads Section -->
-        <section id="downloads" class="downloads fade-in-section">
-            <div class="section-container">
-                <h2 class="section-title">Files & <span class="gradient-text">Certificates</span></h2>
-                <div class="download-cards">
-                    
-                    <div class="download-card glass-panel interactive-card">
-                        <div class="card-glow"></div>
-                        <i class="fas fa-file-pdf download-icon gradient-text"></i>
-                        <h3>Resume</h3>
-                        <p>Latest professional resume with detailed technical background.</p>
-                        <div class="btn-group">
-                            <a href="Mohammed shahid Resume.pdf" target="_blank" class="btn btn-outline btn-sm">View</a>
-                            <a href="Mohammed shahid Resume.pdf" download class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Download</a>
-                        </div>
-                    </div>
-
-                    <div class="download-card glass-panel interactive-card">
-                        <div class="card-glow"></div>
-                        <i class="fas fa-certificate download-icon gradient-text"></i>
-                        <h3>Certificates</h3>
-                        <p>Professional certifications in programming and development.</p>
-                        <div class="cert-links">
-                            <a href="R Programing certificate .pdf" target="_blank" class="cert-link">
-                                <i class="fas fa-award"></i> R Programming for Beginners
-                            </a>
-                            <a href="Python Certificate.pdf" target="_blank" class="cert-link">
-                                <i class="fas fa-award"></i> Python for Beginners
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact fade-in-section">
-            <div class="section-container">
-                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-                
-                <div class="contact-content">
-                    <div class="contact-info glass-panel">
-                        <h3>Let's build something <span class="gradient-text">amazing</span> together.</h3>
-                        <p class="contact-subtitle">I'm currently available for freelance work and open to new opportunities.</p>
-                        
-                        <div class="contact-methods">
-                            <a href="mailto:mohammedshahid92281@gmail.com" class="contact-item interactive-card">
-                                <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                                <div class="item-details">
-                                    <span class="label">Email Me</span>
-                                    <span class="value">mohammedshahid92281@gmail.com</span>
-                                </div>
-                            </a>
-
-                            <div class="contact-item interactive-card">
-                                <div class="icon-box"><i class="fas fa-phone"></i></div>
-                                <div class="item-details">
-                                    <span class="label">Call Me</span>
-                                    <span class="value">+91 9353583205</span>
-                                </div>
-                            </div>
-
-                            <div class="contact-item interactive-card">
-                                <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
-                                <div class="item-details">
-                                    <span class="label">Location</span>
-                                    <span class="value">Tumkur, India</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="social-links-container mt-4">
-                            <h4>Connect</h4>
-                            <div class="social-links">
-                                <a href="https://www.linkedin.com/in/mohammed-shahid-b2296a3b6/" target="_blank" class="social-icon" aria-label="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://github.com/mohammedshahid92281-web" target="_blank" class="social-icon" aria-label="Github">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-form-container glass-panel">
-                        <h3>Send a Message</h3>
-                        <form action="mailto:mohammedshahid92281@gmail.com" method="POST" enctype="text/plain" class="contact-form">
-                            <div class="form-group">
-                                <input type="text" name="Name" required placeholder=" " id="name">
-                                <label for="name">Your Name</label>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="Email" required placeholder=" " id="email">
-                                <label for="email">Your Email</label>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="Message" rows="5" required placeholder=" " id="message"></textarea>
-                                <label for="message">Your Message</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary submit-btn">
-                                <span>Send Message</span> <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
+                    <div class="social-row">
+                        <a href="https://www.linkedin.com/in/mohammed-shahid-b2296a3b6/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/mohammedshahid92281-web" target="_blank">GitHub</a>
+                        <span>Location: Tumkur, India</span>
                     </div>
                 </div>
-
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <a href="#home" class="footer-logo">Mohammed <span>Shahid</span></a>
-            <p>&copy; 2026 Mohammed Shahid. All rights reserved.</p>
-            <p class="made-with">Made with <i class="fas fa-heart text-pink"></i> using code.</p>
-        </div>
+    <footer class="minimal-footer">
+        <p>&copy; 2026 Mohammed Shahid.</p>
+        <p>Built with purpose.</p>
     </footer>
+
+    <!-- Spinning 'Hire Me' Badge -->
+    <div class="spinning-badge">
+        <a href="mailto:mohammedshahid92281@gmail.com" class="badge-inner">
+            <!-- Circular SVG Text -->
+            <svg viewBox="0 0 100 100" width="120" height="120">
+                <defs>
+                    <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                </defs>
+                <text font-size="11" font-weight="600" letter-spacing="1.5">
+                    <textPath href="#circlePath">
+                        MOHAMMED SHAHID • SOFTWARE DEVELOPER • 
+                    </textPath>
+                </text>
+            </svg>
+            <div class="badge-center"><i class="fas fa-arrow-right"></i></div>
+        </a>
+    </div>
 
     <!-- Voice Assistant UI -->
     <div id="voice-assistant" class="voice-assistant">
@@ -261,7 +197,7 @@
         <button id="voice-btn" class="voice-btn" title="Click to use voice commands">
             <i class="fas fa-microphone"></i>
         </button>
-        <div id="voice-status" class="voice-status glass-panel">Hello! I'm listening. Try saying "Show projects".</div>
+        <div id="voice-status" class="voice-status">Listening...</div>
     </div>
 
     <!-- Custom Scripts -->
