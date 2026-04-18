@@ -16,6 +16,9 @@
     <link rel="icon" type="image/jpeg" href="Shahid img.jpeg">
 </head>
 <body class="dark-theme">
+    <!-- Custom Magnetic Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
     <!-- Click to Enter Screen (Fixes Browser Autoplay Block) -->
     <div id="enter-screen" class="enter-screen">
         <div class="enter-content">
@@ -27,6 +30,7 @@
 
     <div id="blob-bg"></div>
     <div id="blob-bg-2"></div>
+    <canvas id="particle-canvas"></canvas>
     
     <header>
         <nav>
@@ -263,6 +267,12 @@
         </button>
     </div>
 
+    <!-- GSAP for Scroll Animations & Magnetic Physics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    
     <!-- Custom Scripts -->
     <script src="script.js"></script>
 </body>

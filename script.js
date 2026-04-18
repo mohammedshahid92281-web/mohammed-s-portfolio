@@ -1,4 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Smooth Scrolling (Lenis)
+    // ==========================================
+    let lenis;
+    if (typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Sync Lenis with ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+    }
+
     // 1. Mobile Navigation Toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
@@ -8,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('active');
         
-        // Prevent body scrolling when menu is open
         if(navLinks.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -16,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close mobile menu when a link is clicked
     links.forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -33,11 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             header.classList.remove('scrolled');
         }
-        
         updateActiveNavLink();
     });
 
-    // 3. Highlight active nav link on scroll
     const sections = document.querySelectorAll('section');
     function updateActiveNavLink() {
         let current = '';
@@ -59,25 +81,170 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Intersection Observer for Scroll Animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
+    // 3. Cinematic Particle Background
+    // ==========================================
+    const canvas = document.getElementById('particle-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 150 };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                // Optional: Stop observing once element is visible
-                // observer.unobserve(entry.target); 
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 206, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+            update() {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                let maxDistance = mouse.radius;
+                let force = (maxDistance - distance) / maxDistance;
+                let directionX = forceDirectionX * force * this.density;
+                let directionY = forceDirectionY * force * this.density;
+
+                if (distance < mouse.radius) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        let dx = this.x - this.baseX;
+                        this.x -= dx / 10;
+                    }
+                    if (this.y !== this.baseY) {
+                        let dy = this.y - this.baseY;
+                        this.y -= dy / 10;
+                    }
+                }
+            }
+        }
+
+        function initParticles() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            const numberOfParticles = (canvas.width * canvas.height) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].draw();
+                particles[i].update();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', initParticles);
+        initParticles();
+        animateParticles();
+    }
+
+    // 4. GSAP Magnetic Cursor & Card Tilt
+    // ==========================================
+    const cursor = document.querySelector('.cursor');
+    const follower = document.querySelector('.cursor-follower');
+    
+    if (cursor && follower && typeof gsap !== 'undefined') {
+        let posX = 0, posY = 0, mouseX = 0, mouseY = 0;
+
+        gsap.to({}, {
+            duration: 0.016,
+            repeat: -1,
+            onRepeat: function () {
+                posX += (mouseX - posX) / 9;
+                posY += (mouseY - posY) / 9;
+                gsap.set(follower, { css: { left: posX - 20, top: posY - 20 } });
+                gsap.set(cursor, { css: { left: mouseX - 4, top: mouseY - 4 } });
             }
         });
-    }, observerOptions);
 
-    const fadeElements = document.querySelectorAll('.fade-in-section');
-    fadeElements.forEach(el => observer.observe(el));
+        document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        const interactables = document.querySelectorAll('a, button, .interactive-card, input, textarea');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => follower.classList.add('active'));
+            el.addEventListener('mouseleave', () => follower.classList.remove('active'));
+            
+            // Subtle 3D Tilt Effect for cards
+            if (el.classList.contains('interactive-card')) {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    gsap.to(el, {
+                        rotateX: rotateX,
+                        rotateY: rotateY,
+                        scale: 1.05,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    gsap.to(el, {
+                        rotateX: 0,
+                        rotateY: 0,
+                        scale: 1,
+                        duration: 0.5,
+                        ease: "elastic.out(1, 0.3)"
+                    });
+                });
+            }
+        });
+    }
+
+    // 4.5 GSAP Scroll Animations
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        const fadeElements = gsap.utils.toArray('.fade-in-section, .project-card, .skill-category');
+        fadeElements.forEach(el => {
+            gsap.fromTo(el, 
+                { y: 60, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    }
 
     // 5. Voice Assistant
     // ==========================================
@@ -98,9 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function speak(text) {
-            // Check if user requested silent mode or if speechSynthesis exists
             if (!('speechSynthesis' in window)) return;
-            // Best effort voice synthesis
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.rate = 1.0;
             utterance.pitch = 1.0;
@@ -129,10 +294,12 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 if (command.includes('project') || command.includes('work')) {
                     speak("Scrolling to projects.");
-                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                    if(lenis) lenis.scrollTo('#projects');
+                    else document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
                 } else if (command.includes('about') || command.includes('who are you')) {
                     speak("Scrolling to about section.");
-                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                    if(lenis) lenis.scrollTo('#about');
+                    else document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
                 } else if (command.includes('download') || command.includes('resume') || command.includes('cv')) {
                     speak("Downloading resume.");
                     const link = document.createElement('a');
@@ -141,7 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.click();
                 } else if (command.includes('contact') || command.includes('hire') || command.includes('email')) {
                     speak("Scrolling to contact form.");
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    if(lenis) lenis.scrollTo('#contact');
+                    else document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                     setTimeout(() => document.getElementById('name')?.focus(), 800);
                 } else if (command.includes('joke')) {
                     speak("Why do programmers prefer dark mode? Because light attracts bugs!");
@@ -161,11 +329,8 @@ document.addEventListener('DOMContentLoaded', () => {
         recognition.onerror = (event) => {
             recognition.stop();
             voiceBtn.classList.remove('listening');
-            if(event.error === 'not-allowed') {
-                showToast("Microphone access denied.");
-            } else {
-                showToast("Sorry, couldn't hear that.");
-            }
+            if(event.error === 'not-allowed') showToast("Microphone access denied.");
+            else showToast("Sorry, couldn't hear that.");
         };
 
         // Enter Screen Logic
@@ -182,13 +347,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!hasWelcomed) {
                     hasWelcomed = true;
-                    // Fix iOS/Safari AudioContext requirement by ensuring it fires strictly on the click stack
                     window.speechSynthesis.resume();
                     speak("Welcome to Mohammed Shahid's portfolio. I am his artificial intelligence voice assistant. Feel free to explore his work!");
                 }
             });
         }
     } else if (voiceBtn) {
-        voiceBtn.style.display = 'none'; // Hide if unsupported by browser
+        voiceBtn.style.display = 'none';
     }
 });
