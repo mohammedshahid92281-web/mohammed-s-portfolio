@@ -127,55 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --------------------------------------------------------
-    // 4. CUSTOM CURSOR
-    // --------------------------------------------------------
-    const cursor = document.getElementById('custom-cursor');
-    const follower = document.getElementById('custom-cursor-follower');
-    
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
-
-    // Is mobile check
-    const isMobile = window.innerWidth <= 768;
-
-    if (!isMobile && cursor && follower) {
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            // Core cursor snaps instantly
-            gsap.to(cursor, {
-                x: mouseX,
-                y: mouseY,
-                duration: 0.1
-            });
-        });
-
-        // Follower has a slight drag/easing
-        gsap.ticker.add(() => {
-            followerX += (mouseX - followerX) * 0.1;
-            followerY += (mouseY - followerY) * 0.1;
-            gsap.set(follower, {
-                x: followerX,
-                y: followerY
-            });
-        });
-
-        // Add hover effect to all links and buttons
-        const hoverElements = document.querySelectorAll('a, button, .bento-item');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-                follower.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-                follower.classList.remove('hover');
-            });
-        });
-    }
-
-    // --------------------------------------------------------
     // 5. MAGNETIC BUTTONS
     // --------------------------------------------------------
     if (!isMobile) {
