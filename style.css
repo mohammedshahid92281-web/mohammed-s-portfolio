@@ -960,10 +960,10 @@ footer {
    ================================== */
 .enter-screen {
     position: fixed;
-    top: 0; left: 0; 
+    top: 0; left: 0; right: 0; bottom: 0;
     width: 100%; height: 100%;
-    background: #020617; /* Solid color to prevent peek-through */
-    z-index: 9999999; /* Higher than header and everything else */
+    background: #020617; 
+    z-index: 999999999; /* Absolute top */
     display: flex;
     justify-content: center;
     align-items: center;

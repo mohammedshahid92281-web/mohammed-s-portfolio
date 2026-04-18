@@ -344,6 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
             enterBtn.addEventListener('click', () => {
                 enterScreen.classList.add('hidden');
                 document.body.classList.remove('no-scroll');
+                const header = document.querySelector('header');
+                if (header) header.classList.add('visible');
                 setTimeout(() => {
                     enterScreen.style.display = 'none';
                 }, 800);
