@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Disable Scroll for Enter Screen
+    document.body.classList.add('no-scroll');
     // 0. Smooth Scrolling (Lenis)
     // ==========================================
     let lenis;
@@ -341,6 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (enterBtn && enterScreen) {
             enterBtn.addEventListener('click', () => {
                 enterScreen.classList.add('hidden');
+                document.body.classList.remove('no-scroll');
                 setTimeout(() => {
                     enterScreen.style.display = 'none';
                 }, 800);
