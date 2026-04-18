@@ -16,6 +16,18 @@
     <link rel="icon" type="image/jpeg" href="Shahid img.jpeg">
 </head>
 <body class="aurora-theme">
+    <!-- Cinematic Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-text-wrapper"><h2 id="preloader-text">MOHAMMED SHAHID</h2></div>
+            <div class="counter" id="counter">0%</div>
+        </div>
+    </div>
+
+    <!-- Custom Animated Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
+
     <!-- Aurora Background Orbs -->
     <div class="aurora-container">
         <div class="orb orb-1"></div>
@@ -71,8 +83,8 @@
                     <h1>I build <br>digital <br>experiences.</h1>
                     <p>I am a final-year BCA student and Software Developer passionate about turning creative ideas into clean, functional, and scalable code.</p>
                     <div class="hero-actions">
-                        <a href="#projects" class="btn btn-solid">View Work</a>
-                        <a href="Mohammed shahid Resume.pdf" target="_blank" class="btn btn-outline">Resume</a>
+                        <a href="#projects" class="btn btn-solid magnetic">View Work</a>
+                        <a href="Mohammed shahid Resume.pdf" target="_blank" class="btn btn-outline magnetic">Resume</a>
                     </div>
                 </div>
             </div>
@@ -230,6 +242,10 @@
         <div id="voice-status" class="voice-status">Listening...</div>
     </div>
 
+    <!-- Embedded GSAP for Cinematic Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <!-- Custom Scripts -->
     <script src="script.js"></script>
 </body>
