@@ -1,4 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Welcome Overlay & Introduction
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    
+    if (welcomeOverlay) {
+        welcomeOverlay.addEventListener('click', () => {
+            // Hide overlay
+            welcomeOverlay.style.opacity = '0';
+            setTimeout(() => {
+                welcomeOverlay.style.display = 'none';
+            }, 500);
+
+            // Speak Introduction
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel(); // Clear queue
+                const text = "Welcome to the professional portfolio of Mohammed Shahid. I am a software developer and B C A student. Feel free to use the microphone icon in the corner to navigate my work using your voice.";
+                const utterance = new SpeechSynthesisUtterance(text);
+                
+                // Slight delay for dramatic effect after fade out
+                setTimeout(() => {
+                    window.speechSynthesis.speak(utterance);
+                }, 400); 
+            }
+        });
+    }
+
     // 1. Mobile Navigation Toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
