@@ -15,7 +15,14 @@
     <!-- Favicon (Web Symbol) -->
     <link rel="icon" type="image/jpeg" href="Shahid img.jpeg">
 </head>
-<body class="dhyan-theme">
+<body class="aurora-theme">
+    <!-- Aurora Background Orbs -->
+    <div class="aurora-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
     <!-- Welcome Overlay for Autoplay Policy -->
     <div id="welcome-overlay" class="welcome-overlay">
         <div class="welcome-content">
@@ -80,7 +87,7 @@
             
             <div class="bento-grid">
                 <!-- Large Project -->
-                <a href="smart on line quiz management system.pdf" target="_blank" class="bento-item bento-large">
+                <a href="smart on line quiz management system.pdf" target="_blank" class="bento-item bento-large fade-in-item">
                     <div class="bento-content">
                         <div class="bento-icon"><i class="fas fa-graduation-cap"></i></div>
                         <h3>Smart Online Quiz System</h3>
@@ -90,7 +97,7 @@
                 </a>
 
                 <!-- Small Project -->
-                <a href="personal portfolio.pdf" target="_blank" class="bento-item">
+                <a href="personal portfolio.pdf" target="_blank" class="bento-item fade-in-item" style="transition-delay: 0.1s;">
                     <div class="bento-content">
                         <div class="bento-icon"><i class="fas fa-id-badge"></i></div>
                         <h3>Personal Portfolio</h3>
@@ -100,7 +107,7 @@
                 </a>
 
                 <!-- Small Info Block -->
-                <div class="bento-item bento-dark">
+                <div class="bento-item bento-dark fade-in-item" style="transition-delay: 0.2s;">
                     <div class="bento-content">
                         <h3>Tech Stack</h3>
                         <div class="bento-tags">
@@ -150,19 +157,42 @@
              </div>
         </section>
 
-        <!-- Minimal Contact Section -->
-        <section id="contact" class="contact-simple section-padding fade-in-section">
-            <h2 class="massive-text">Let's talk.</h2>
-            <div class="contact-grid">
-                <div class="contact-details">
-                    <p class="contact-desc">Currently available for freelance opportunities and full-time roles.</p>
-                    <a href="mailto:mohammedshahid92281@gmail.com" class="big-email">mohammedshahid92281@gmail.com</a>
-                    
-                    <div class="social-row">
-                        <a href="https://www.linkedin.com/in/mohammed-shahid-b2296a3b6/" target="_blank">LinkedIn</a>
-                        <a href="https://github.com/mohammedshahid92281-web" target="_blank">GitHub</a>
-                        <span>Location: Tumkur, India</span>
+        <!-- Contact Section with Working Form -->
+        <section id="contact" class="contact-section section-padding fade-in-section">
+            <div class="split-container">
+                <div class="info-left">
+                    <h2 class="massive-text" style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 1rem;">Let's talk.</h2>
+                    <p class="contact-desc" style="font-size: 1.1rem; margin-bottom: 3rem;">Currently available for freelance opportunities and full-time roles. Use the form to send me an email directly!</p>
+                    <div class="social-col" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <a href="mailto:mohammedshahid92281@gmail.com" class="social-link" style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; transition: color 0.3s;"><i class="fas fa-envelope" style="color: var(--neon-cyan);"></i> mohammedshahid92281@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/mohammed-shahid-b2296a3b6/" target="_blank" class="social-link" style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; transition: color 0.3s;"><i class="fab fa-linkedin" style="color: var(--neon-cyan);"></i> LinkedIn Profile</a>
+                        <a href="https://github.com/mohammedshahid92281-web" target="_blank" class="social-link" style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; transition: color 0.3s;"><i class="fab fa-github" style="color: var(--neon-cyan);"></i> GitHub Portfolio</a>
+                        <span class="social-link" style="display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; color: var(--text-secondary);"><i class="fas fa-map-marker-alt" style="color: var(--neon-cyan);"></i> Tumkur, India</span>
                     </div>
+                </div>
+                
+                <div class="info-right">
+                    <form action="https://formsubmit.co/mohammedshahid92281@gmail.com" method="POST" class="glass-form" id="contactForm">
+                        <input type="hidden" name="_subject" value="New Portfolio Submission!">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required class="form-input" placeholder="John Doe">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required class="form-input" placeholder="john@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required class="form-input form-textarea" placeholder="Hello Mohammed, I'd like to work with you on..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-solid w-100">Send Message <i class="fas fa-paper-plane" style="margin-left: 10px;"></i></button>
+                    </form>
                 </div>
             </div>
         </section>

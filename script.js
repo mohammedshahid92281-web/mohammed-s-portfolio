@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const fadeElements = document.querySelectorAll('.fade-in-section');
+    const fadeElements = document.querySelectorAll('.fade-in-section, .fade-in-item');
     fadeElements.forEach(el => observer.observe(el));
 
     // 5. Voice Assistant
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     speak("Navigating to home.");
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } 
-                else if (command.includes('about') || command.includes('who are you')) {
+                else if (command.includes('about')) {
                     speak("Navigating to about me.");
                     document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
                 } 
@@ -185,19 +185,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 else if (command.includes('download') || command.includes('resume')) {
                     speak("Downloading resume.");
                     document.getElementById('downloads').scrollIntoView({ behavior: 'smooth' });
-                    // Automatically click the download link
                     const downloadLink = document.querySelector('a[download]');
                     if(downloadLink) downloadLink.click();
                 } 
                 else if (command.includes('contact') || command.includes('touch')) {
                     speak("Navigating to contact section.");
                     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                } 
+                }
+                else if (command.includes('hire')) {
+                    speak("Excellent choice! Opening the contact form now.");
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                    const nameInput = document.getElementById('name');
+                    if(nameInput) {
+                        setTimeout(() => nameInput.focus(), 1000);
+                    }
+                }
+                else if (command.includes('joke')) {
+                    speak("Why do programmers prefer dark mode? Because light attracts bugs!");
+                }
+                else if (command.includes('who are you') || command.includes('who is mohammed')) {
+                    speak("Mohammed Shahid is a passionate software developer and B C A student from India, specializing in web development and crafting beautiful digital experiences.");
+                }
                 else if (command.includes('hello') || command.includes('hi')) {
-                    speak("Hello! I am the portfolio voice assistant. You can ask me to show projects or go to contact.");
+                    speak("Hello! I am the portfolio voice assistant. You can ask me to tell a joke, or say 'Hire Mohammed'.");
                 } 
                 else {
-                    speak("Sorry, I didn't understand that command. Try saying 'show projects'.");
+                    speak("Sorry, I didn't understand that command. Try saying 'tell me a joke'.");
                     showStatus("Command not recognized.");
                 }
             }
