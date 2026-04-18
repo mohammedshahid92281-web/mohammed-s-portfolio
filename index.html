@@ -4,596 +4,247 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammed Shahid - Professional Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2563eb;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 0 2rem;
-            z-index: 2;
-            position: relative;
-        }
-
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid white;
-            margin: 0 auto 2rem;
-            object-fit: cover;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #2563eb;
-        }
-
-        .btn-primary:hover {
-            background: #2563eb;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border-color: white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #2563eb;
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            color: #2563eb;
-        }
-
-        /* About */
-        .about {
-            background: #f8fafc;
-            padding-top: 150px;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #2563eb;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill-tag {
-            background: #2563eb;
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-
-
-    
-
-       /* Downloads */
-        .downloads {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            text-align: center;
-            padding-top: 150px;
-        }
-
-        .download-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .download-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-
-        .download-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.2);
-        }
-
-        .download-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        /* Contact */
-        .contact {
-            background: #f8fafc;
-            padding-top: 150px;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .contact-info h3 {
-            color: #2563eb;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: #2563eb;
-            margin-right: 1rem;
-            width: 30px;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2563eb;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: #1e293b;
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
-                padding: 2rem 0;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            section {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Mohammed Shahid</div>
-            <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#downloads">Downloads</a></li>
-           <li><a href="#contact">Contact</a></li>
-           </ul>
-
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <!-- 👈 CHANGE YOUR PHOTO HERE -->
-            <img src="Shahid img.jpeg" alt="Profile Photo" class="profile-img">
-            <!-- 👈 CHANGE YOUR NAME HERE -->
-            <h1>Hey,I'am Mohammed Shahid</h1>
-            <p>i am a final year BCA Student passionate About turning ideas into clean functional code</p>
-            <div class="cta-buttons">
-                <a href="Mohammed shahid Resume.pdf" class="btn btn-primary" onclick="scrollToSection('downloads')">View Resume</a>
-                <a href="smart on line quiz management system.pdf" class="btn btn-secondary" onclick="scrollToSection('projects')">View Work</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div>
-                <!-- 👈 CHANGE ABOUT PHOTO HERE -->
-                <img src="Shahid img.jpeg"alt="About" class="profile-img">
-            </div>
-            <div class="about-text">
-                <!-- hi i am Boss 👈 CHANGE YOUR BIO HERE -->
-                <h3>I am final year BCA Student</h3>
-                <p>I am Mohammed Shahid, a final-year Bachelor of Computer Applications (BCA) student with a strong passion for technology and software development. I am deeply interested in web development, programming, and artificial intelligence, and I enjoy creating modern, user-friendly applications that solve real-world problems..</p>
-                <p>My goal is to build a successful career as a software developer, where I can contribute to innovative projects and grow both personally and professionally..</p>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- Projects Section -->
-<section id="projects" class="projects">
-  <h2 class="section-title">Projects</h2>
-  <div class="projects-grid">
+<body class="dark-theme">
+    <div id="blob-bg"></div>
+    <div id="blob-bg-2"></div>
     
-    <!-- Project 1 -->
-    <div class="projects-item">
-      <a href="smart on line quiz management system.pdf"_blank">
-        <i class="fas fa-laptop-code" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
-        <h3>Smart online quiz management System</h3>
-        <p>The Smart Online Quiz Management System is a web-based application designed to simplify
-           the process of conducting quizzes and examinations online. It helps educational institutions 
-           manage quizzes efficiently by providing features like automatic evaluation, instant result generation, 
-           and performance tracking. The system saves time, reduces manual effort, and ensures accuracy in result calculation. 
-           It also allows students to access quizzes from anywhere, making it highly useful for remote learning. Overall, 
-           this project provides a secure, cost-effective, and user-friendly solution for modern online education..</p>
-      </a>
-    </div>
-
-    <!-- Project 2 -->
-    <div class="projects-item">
-      <a href="personal portfolio.pdf" target="_blank">
-        <i class="fas fa-mobile-alt" style="font-size: 3rem; color: #2563eb; margin-bottom: 1rem;"></i>
-        <h3>Personal portfolio Website</h3>
-        <p>A personal portfolio website is an online platform used to showcase an individual’s skills, 
-            projects, achievements, and professional information. It acts as a digital resume that is 
-            accessible anytime and anywhere, allowing students and professionals to present their work 
-            in a more interactive and attractive way. Through a portfolio website, one can display completed 
-            projects, highlight technical skills, and provide contact details for recruiters or clients.
-            It also helps in building a strong personal brand and improving career opportunities such as jobs, 
-            internships, and freelance work. Overall, a personal portfolio website is an important tool for 
-            demonstrating abilities and creating a positive impression in the digital world...</p>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<style>
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-  }
-
-  .projects-item {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    transition: all 0.3s;
-    text-align: center;
-    opacity: 0; /* start hidden */
-    animation: fadeInUp 0.8s ease forwards;
-  }
-
-  .projects-item:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-  }
-
-  .projects-item h3 {
-    color: #2563eb;
-    margin-bottom: 1rem;
-  }
-
-  .projects-item a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .projects-item:nth-child(1) { animation-delay: 0.2s; }
-  .projects-item:nth-child(2) { animation-delay: 0.4s; }
-  .projects-item:nth-child(3) { animation-delay: 0.6s; }
-</style>
-
-
-   
-           
-    <!-- Downloads Section -->
-    <section id="downloads" class="downloads">
-        <h2 class="section-title" style="color: white;">Download Documents</h2>
-        <div class="download-cards">
-            <div class="download-card">
-                <!-- 👈 CHANGE RESUME LINK HERE -->
-                <i class="fas fa-file-pdf download-icon"></i>
-                <!-- View Resume -->
-    <a href="Mohammed shahid Resume.pdf" target="_blank" 
-       class="btn" style="background: white; color: #2563eb; margin-top: 1rem; display: inline-block;">
-       View Resume
-    </a>
-                <h3>Resume</h3>
-                <p>Latest Resume in image  format</p>
-                <a href="Mohammed shahid Resume.pdf" download="YourName-Resume.jpeg" class="btn" style="background: white; color: #2563eb; margin-top: 1rem; display: inline-block;">Download Resume</a>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="#home" class="logo">M<span>S.</span></a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#downloads">Downloads</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-            <div class="download-card">
-                <!-- 👈 CHANGE CERTIFICATE LINK HERE -->
-                <i class="fas fa-certificate download-icon"></i>
-                <h3>Certificates</h3>
-                <p>All professional certifications</p>
-                <a href="R Programing certificate .pdf"class="btn" style="background: white; color: #2563eb; margin-top: 1rem; display: inline-block;">View Certificates</a>
-                <p><b>R programming for begginers</b></p>
-                <a href="Python Certificate.pdf"class="btn" style="background: white; color: #2563eb; margin-top: 1rem; display: inline-block;">View Certificates</a>
-                <p><b>Python for beginners</b></p>
-            </div>
-        </div>
-    </section>
+        </nav>
+    </header>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <!-- 👈 CHANGE CONTACT DETAILS HERE -->
-                <h3>Let's work together!</h3>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>Mohammed Shahid</span>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero fade-in-section">
+            <div class="hero-content">
+                <div class="profile-img-container">
+                    <img src="Shahid img.jpeg" alt="Mohammed Shahid Photo" class="profile-img">
+                    <div class="glow-ring"></div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>mohammedshahid92281@gmail.com</span>
+                <div class="hero-text">
+                    <span class="greeting">Hello, I'm</span>
+                    <h1 class="glitch-effect" data-text="Mohammed Shahid">Mohammed Shahid</h1>
+                    <h2>Software Developer & BCA Student</h2>
+                    <p>Passionate about turning creative ideas into clean, functional, and scalable code. Let's build the future together.</p>
+                    <div class="cta-buttons">
+                        <a href="Mohammed shahid Resume.pdf" target="_blank" class="btn btn-primary">
+                            <span>View Resume</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <span>View My Work</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+91 9353583205</span>
+            </div>
+            <a href="#about" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about fade-in-section">
+            <div class="section-container">
+                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+                <div class="about-content glass-panel">
+                    <div class="about-text">
+                        <h3>I am a final year BCA Student</h3>
+                        <p>I am Mohammed Shahid, a final-year Bachelor of Computer Applications (BCA) student with a strong passion for technology and software development. I am deeply interested in web development, programming, and artificial intelligence, enjoying creating modern, user-friendly applications that solve real-world problems.</p>
+                        <p>My goal is to build a successful career as a software developer, where I can contribute to innovative projects and grow both personally and professionally. I'm constantly learning and exploring new technologies to enhance my skill set.</p>
+                        
+                        <div class="skills-container mt-4">
+                            <h4>Core Skills & Interests</h4>
+                            <div class="skills">
+                                <span class="skill-tag">Web Development</span>
+                                <span class="skill-tag">Python & AI</span>
+                                <span class="skill-tag">UI/UX Design</span>
+                                <span class="skill-tag">Problem Solving</span>
+                                <span class="skill-tag">R Programming</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Tumkur, India</span>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects fade-in-section">
+            <div class="section-container">
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+                <div class="projects-grid">
+                    
+                    <!-- Project 1 -->
+                    <a href="smart on line quiz management system.pdf" target="_blank" class="project-card glass-panel interactive-card">
+                        <div class="project-icon-wrapper">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Smart Online Quiz System</h3>
+                            <p>A web-based application to simplify online examinations with features like automatic evaluation, instant result generation, and performance tracking.</p>
+                            <span class="read-more">View Details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Project 2 -->
+                    <a href="personal portfolio.pdf" target="_blank" class="project-card glass-panel interactive-card">
+                        <div class="project-icon-wrapper">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Personal Portfolio</h3>
+                            <p>An interactive digital platform designed to showcase skills, projects, and achievements, acting as a modern, accessible digital resume.</p>
+                            <span class="read-more">View Details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
                 </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/mohammed-shahid-b2296a3b6/">Linkdin</a>
-                    <a href="https://github.com/mohammedshahid92281-web">Github</a>
-				
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section id="downloads" class="downloads fade-in-section">
+            <div class="section-container">
+                <h2 class="section-title">Files & <span class="gradient-text">Certificates</span></h2>
+                <div class="download-cards">
+                    
+                    <div class="download-card glass-panel interactive-card">
+                        <div class="card-glow"></div>
+                        <i class="fas fa-file-pdf download-icon gradient-text"></i>
+                        <h3>Resume</h3>
+                        <p>Latest professional resume with detailed technical background.</p>
+                        <div class="btn-group">
+                            <a href="Mohammed shahid Resume.pdf" target="_blank" class="btn btn-outline btn-sm">View</a>
+                            <a href="Mohammed shahid Resume.pdf" download class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+
+                    <div class="download-card glass-panel interactive-card">
+                        <div class="card-glow"></div>
+                        <i class="fas fa-certificate download-icon gradient-text"></i>
+                        <h3>Certificates</h3>
+                        <p>Professional certifications in programming and development.</p>
+                        <div class="cert-links">
+                            <a href="R Programing certificate .pdf" target="_blank" class="cert-link">
+                                <i class="fas fa-award"></i> R Programming for Beginners
+                            </a>
+                            <a href="Python Certificate.pdf" target="_blank" class="cert-link">
+                                <i class="fas fa-award"></i> Python for Beginners
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
-            </form>
-        </div>
-    </section>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact fade-in-section">
+            <div class="section-container">
+                <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+                
+                <div class="contact-content">
+                    <div class="contact-info glass-panel">
+                        <h3>Let's build something <span class="gradient-text">amazing</span> together.</h3>
+                        <p class="contact-subtitle">I'm currently available for freelance work and open to new opportunities.</p>
+                        
+                        <div class="contact-methods">
+                            <a href="mailto:mohammedshahid92281@gmail.com" class="contact-item interactive-card">
+                                <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                                <div class="item-details">
+                                    <span class="label">Email Me</span>
+                                    <span class="value">mohammedshahid92281@gmail.com</span>
+                                </div>
+                            </a>
+
+                            <div class="contact-item interactive-card">
+                                <div class="icon-box"><i class="fas fa-phone"></i></div>
+                                <div class="item-details">
+                                    <span class="label">Call Me</span>
+                                    <span class="value">+91 9353583205</span>
+                                </div>
+                            </div>
+
+                            <div class="contact-item interactive-card">
+                                <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="item-details">
+                                    <span class="label">Location</span>
+                                    <span class="value">Tumkur, India</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links-container mt-4">
+                            <h4>Connect</h4>
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/mohammed-shahid-b2296a3b6/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/mohammedshahid92281-web" target="_blank" class="social-icon" aria-label="Github">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container glass-panel">
+                        <h3>Send a Message</h3>
+                        <form action="mailto:mohammedshahid92281@gmail.com" method="POST" enctype="text/plain" class="contact-form">
+                            <div class="form-group">
+                                <input type="text" name="Name" required placeholder=" " id="name">
+                                <label for="name">Your Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="Email" required placeholder=" " id="email">
+                                <label for="email">Your Email</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="Message" rows="5" required placeholder=" " id="message"></textarea>
+                                <label for="message">Your Message</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026  Mohammed Shahid. All rights reserved. | Made with ❤️
-        </p>
+        <div class="footer-content">
+            <a href="#home" class="footer-logo">Mohammed <span>Shahid</span></a>
+            <p>&copy; 2026 Mohammed Shahid. All rights reserved.</p>
+            <p class="made-with">Made with <i class="fas fa-heart text-pink"></i> using code.</p>
+        </div>
     </footer>
+
+    <!-- Custom Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
