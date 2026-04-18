@@ -950,6 +950,202 @@ footer {
     }
     .voice-btn {
         width: 50px;
+    left: 1.25rem;
+    top: 1.25rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group input:not(:placeholder-shown),
+.form-group textarea:not(:placeholder-shown) {
+    border-color: #3b82f6;
+    background: rgba(0, 0, 0, 0.4);
+    outline: none;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -0.6rem;
+    left: 1rem;
+    font-size: 0.85rem;
+    background: var(--bg-color-alt);
+    padding: 0 0.5rem;
+    color: #3b82f6;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    width: 100%;
+}
+
+/* ==================================
+   Footer
+   ================================== */
+footer {
+    padding: 4rem 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.footer-logo span { color: #3b82f6; }
+.made-with { margin-top: 0.5rem; font-size: 0.95rem; }
+
+/* ==================================
+   Animations and Intersections
+   ================================== */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, visibility;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ==================================
+   Responsive Design
+   ================================== */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .profile-img-container {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================================
+   Voice Assistant UI
+   ================================== */
+.voice-assistant-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+}
+
+.voice-toast {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    box-shadow: var(--glass-shadow);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.voice-toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.voice-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    outline: none;
+}
+
+.voice-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.voice-btn:hover {
+    transform: scale(1.1);
+}
+
+.voice-btn:hover::before {
+    opacity: 1;
+}
+
+/* Listening Pulse Animation */
+.voice-btn.listening {
+    animation: voicePulse 1.5s infinite;
+    background: rgba(236, 72, 153, 0.2);
+    border-color: #ec4899;
+    color: #ec4899;
+}
+
+@keyframes voicePulse {
+    0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(236, 72, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+}
+
+@media (max-width: 768px) {
+    .voice-assistant-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    .voice-btn {
+        width: 50px;
         height: 50px;
         font-size: 1.2rem;
     }
@@ -963,7 +1159,7 @@ footer {
     top: 0; left: 0; right: 0; bottom: 0;
     width: 100%; height: 100%;
     background: #020617; 
-    z-index: 999999999; /* Absolute top */
+    z-index: 999999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -985,68 +1181,13 @@ footer {
     gap: 20px;
     background: var(--glass-bg);
     padding: 40px;
-    border-radius: 20px;
+    border-radius: 24px;
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
-    backdrop-filter: blur(10px);
-}
-
-.enter-content h1 {
-    font-size: 2.5rem;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.enter-content p {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-}
-
-#enter-btn i {
-    margin-left: 8px;
-}
-
-@media (max-width: 768px) {
-    :root {
-        --section-padding: 80px 1.5rem;
-    }
-    
-    .hamburger { display: flex; }
-    
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: rgba(2, 6, 23, 0.98);
-        backdrop-filter: blur(20px);
-        transition: 0.4s ease-in-out;
-    }
-    
-    .nav-links.active { right: 0; }
-    
-    .nav-links li { margin: 1.5rem 0; }
-    .nav-links a { font-size: 1.5rem; }
-    
-    .profile-img-container {
-        width: 250px;
-        height: 250px;
-        margin: 0 auto;
-    }
-    
-    .glass-panel { padding: 1.5rem; }
-    .contact-form-container { padding: 2rem 1.5rem; }
-}
-
-/* ==================================
-   Custom Magnetic Cursor
-   ================================== */
-* {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 90%;
+    max-width: 500px;
     cursor: none !important;
 }
 
