@@ -3,6 +3,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
     // --------------------------------------------------------
+    // 0. WELCOME OVERLAY (Autoplay Bypass)
+    // --------------------------------------------------------
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    if (welcomeOverlay) {
+        welcomeOverlay.addEventListener('click', () => {
+            gsap.to(welcomeOverlay, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    welcomeOverlay.style.display = 'none';
+                    // Speak Introduction
+                    if (window.speechSynthesis) {
+                        window.speechSynthesis.cancel(); 
+                        const text = "Welcome to the professional portfolio of Mohammed Shahid. I am a software developer and B C A student. Feel free to use the microphone icon in the corner to navigate my work using your voice.";
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        setTimeout(() => window.speechSynthesis.speak(utterance), 400); 
+                    }
+                }
+            });
+        });
+    }
+
+    // --------------------------------------------------------
     // 1. PRELOADER & INTRO SEQUENCE (GSAP Timeline)
     // --------------------------------------------------------
     const tl = gsap.timeline();
